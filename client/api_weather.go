@@ -7,7 +7,10 @@ import (
 	"io/ioutil"
 	"math/rand"
 	"net/http"
+	"os"
 )
+
+var PORT = os.Getenv("PORT")
 
 func DoPostAPI() {
 	min := 1
@@ -23,7 +26,7 @@ func DoPostAPI() {
 	payloadBuff, _ := json.Marshal(payload)
 
 	client := &http.Client{}
-	req, err := http.NewRequest("POST", "http://localhost:1323/update", bytes.NewBuffer(payloadBuff))
+	req, err := http.NewRequest("POST", fmt.Sprintf("http://localhost:%s/update", PORT), bytes.NewBuffer(payloadBuff))
 
 	if err != nil {
 		fmt.Println(err)
