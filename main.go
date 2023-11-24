@@ -3,10 +3,13 @@ package main
 import (
 	"assignment-three/client"
 	"assignment-three/controller"
+	"os"
 	"time"
 
 	"github.com/labstack/echo/v4"
 )
+
+var PORT = os.Getenv("PORT")
 
 func main() {
 	go func() {
@@ -19,5 +22,5 @@ func main() {
 	e := echo.New()
 	e.POST("/update", controller.UpdateData)
 
-	e.Logger.Fatal(e.Start(":1323"))
+	e.Logger.Fatal(e.Start(":" + PORT))
 }
