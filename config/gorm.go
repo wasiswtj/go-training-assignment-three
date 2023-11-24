@@ -19,7 +19,7 @@ var (
 
 func ConnectGorm() *gorm.DB {
 	// connection string
-	psqlconn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+	psqlconn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
 
 	// open database
 	db, err := gorm.Open(postgres.Open(psqlconn), &gorm.Config{})
